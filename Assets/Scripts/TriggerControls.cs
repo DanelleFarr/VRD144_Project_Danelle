@@ -17,7 +17,8 @@ public class TriggerControls : MonoBehaviour
     //Perform whatever is assigned in the unity field when entering a collider
     private void OnTriggerEnter(Collider other)
     {
-        TriggerExit.Invoke();
+        TriggerEnter.Invoke();
+        Debug.Log("Triggered");
     }
 
     //Perform whatever is assigned in the unity field when exiting a collider
