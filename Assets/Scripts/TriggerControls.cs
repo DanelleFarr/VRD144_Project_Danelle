@@ -13,20 +13,23 @@ public class TriggerControls : MonoBehaviour
     [SerializeField]
     UnityEvent TriggerStay;
 
+    [SerializeField]
+    private Collider[] acceptedColliders;
+
     
     //Perform whatever is assigned in the unity field when entering a collider
     private void OnTriggerEnter(Collider other)
     {
-        TriggerEnter.Invoke();
-        Debug.Log("Triggered");
+        if (IsAccepted(other))
+        {
+            TriggerEnter.Invoke();
+        }//end if IsAccepted
     }
 
     //Perform whatever is assigned in the unity field when exiting a collider
     private void OnTriggerExit(Collider other)
     {
         TriggerExit.Invoke();
-        
-        
     }
 
     ////Perform whatever is assigned in the unity field when staying within a collider
@@ -34,4 +37,16 @@ public class TriggerControls : MonoBehaviour
     {
         TriggerStay.Invoke();
     }
+
+    private bool IsAccepted(Collider other)
+    {
+        foreach (Collider item in acceptedColliders)
+        {
+            if (other == item)
+            {
+                return true;
+            }//end if ==
+        }//end foreach
+        return false;
+    }//end IsAccepted()
 }
