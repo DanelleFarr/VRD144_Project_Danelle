@@ -7,9 +7,9 @@ using UnityEngine;
 public class NoteManager : MonoBehaviour
 {
     [SerializeField]
-    private float speed;
+    private float speed =7;
     [SerializeField]
-    private float frequency;
+    private float frequency = 3;
     [SerializeField]
     private Transform spawnPosition;
     /*[SerializeField]
@@ -27,7 +27,7 @@ public class NoteManager : MonoBehaviour
     [SerializeField]
     private Note vocalNote;*/
     [SerializeField]
-    private NoteBluePrint testNote;
+    private GameObject testNote;
 
 
     public float Speed { get { return speed; } set { speed = Speed; } }
@@ -37,12 +37,27 @@ public class NoteManager : MonoBehaviour
     void Start()
     {
 
-        Instantiate(testNote, spawnPosition);
+        GameObject go = Instantiate(testNote, spawnPosition.position, spawnPosition.rotation);
+        go.GetComponent<NoteBluePrint>().Manager = this;
+
+        StartCoroutine(NoteEmission(Frequency));
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator NoteEmission(float waitTime)
     {
-        
+        float elapsedTime = 0f;
+
+        while (elapsedTime < waitTime)
+        {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime >= waitTime)
+            {
+                GameObject go = Instantiate(testNote, spawnPosition.position, spawnPosition.rotation);
+                go.GetComponent<NoteBluePrint>().Manager = this;
+                elapsedTime = 0f;
+            }
+            yield return null;
+        }
     }
+
 }

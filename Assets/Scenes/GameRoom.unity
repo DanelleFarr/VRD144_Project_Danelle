@@ -202,6 +202,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NoteBase
       objectReference: {fileID: 0}
+    - target: {fileID: 9101132174034457117, guid: f2b2715a1c6e217479e58fde91f3dcf7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9101132174034457118, guid: f2b2715a1c6e217479e58fde91f3dcf7,
         type: 3}
       propertyPath: noteManager
@@ -220,17 +225,17 @@ PrefabInstance:
     - target: {fileID: 9101132174034457123, guid: f2b2715a1c6e217479e58fde91f3dcf7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.21386
+      value: -0.54268646
       objectReference: {fileID: 0}
     - target: {fileID: 9101132174034457123, guid: f2b2715a1c6e217479e58fde91f3dcf7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.2343025
+      value: 0.4932289
       objectReference: {fileID: 0}
     - target: {fileID: 9101132174034457123, guid: f2b2715a1c6e217479e58fde91f3dcf7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -33.278763
+      value: 12.108809
       objectReference: {fileID: 0}
     - target: {fileID: 9101132174034457123, guid: f2b2715a1c6e217479e58fde91f3dcf7,
         type: 3}
@@ -2772,10 +2777,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacd6d521885e79478f4f1b265359db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 10
   frequency: 1
   spawnPosition: {fileID: 602495097}
-  testNote: {fileID: 710359612}
+  testNote: {fileID: 9101132174034457117, guid: f2b2715a1c6e217479e58fde91f3dcf7,
+    type: 3}
 --- !u!4 &362460679
 Transform:
   m_ObjectHideFlags: 0
@@ -2820,18 +2826,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &710359612 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4464096603014007302, guid: eba9af29d59308244a916e2c8b29224c,
-    type: 3}
-  m_PrefabInstance: {fileID: 4464096602381529146}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8666d8e87457f544b9a40a674fa5058b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1045402113
 GameObject:
   m_ObjectHideFlags: 0
@@ -3354,6 +3348,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NoteSimple
       objectReference: {fileID: 0}
+    - target: {fileID: 4464096603014007297, guid: eba9af29d59308244a916e2c8b29224c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4464096603014007303, guid: eba9af29d59308244a916e2c8b29224c,
         type: 3}
       propertyPath: m_Mesh
@@ -3367,17 +3366,17 @@ PrefabInstance:
     - target: {fileID: 4464096603014007419, guid: eba9af29d59308244a916e2c8b29224c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.671173
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4464096603014007419, guid: eba9af29d59308244a916e2c8b29224c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.241074
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4464096603014007419, guid: eba9af29d59308244a916e2c8b29224c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -33.387573
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4464096603014007419, guid: eba9af29d59308244a916e2c8b29224c,
         type: 3}
