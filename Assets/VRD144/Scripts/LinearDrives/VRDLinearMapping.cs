@@ -2,6 +2,7 @@
 
 public class VRDLinearMapping : MonoBehaviour
 {
+    [SerializeField]
     private float value;
     [SerializeField]
     private FloatUnityEvent onValueChanged;

@@ -19,7 +19,7 @@ public class NoteBluePrint : MonoBehaviour
         }
     }
     protected float speed;
-    private float speedModifier = .5f;
+    private float speedModifier = 2f;
 
     private void Start()
     {
@@ -35,6 +35,7 @@ public class NoteBluePrint : MonoBehaviour
     public void MoveForward()
     {
         this.transform.Translate(0, 0, -(speed * speedModifier * Time.deltaTime), Space.World);
+        Debug.Log("Moving");
     }//end MoveForward
 
     

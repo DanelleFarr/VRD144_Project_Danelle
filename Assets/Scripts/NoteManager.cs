@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class NoteManager : MonoBehaviour
 {
+    //[SerializeField]
+    private float speed;
+    //[SerializeField]
+    private float frequency;
+    private float frequencyAdjustment = 3f;
     [SerializeField]
-    private float speed =7;
-    [SerializeField]
-    private float frequency = 3;
-    [SerializeField]
-    private Transform spawnPosition;
+    private Transform[] SpawnPositions;
     /*[SerializeField]
     private Note percussionNote;
     [SerializeField]
@@ -30,34 +31,37 @@ public class NoteManager : MonoBehaviour
     private GameObject testNote;
 
 
-    public float Speed { get { return speed; } set { speed = Speed; } }
-    public float Frequency{ get { return frequency; } set { frequency = Frequency; } }
+    public float Speed { get { return speed; } set { speed = value; Debug.Log("Speed is now " + speed); } }
+    public float Frequency{ get { return frequency; } set { frequency= value * frequencyAdjustment; Debug.Log("Freqeuncy is now " + frequency); } }
 
     // Start is called before the first frame update
     void Start()
     {
 
-        GameObject go = Instantiate(testNote, spawnPosition.position, spawnPosition.rotation);
-        go.GetComponent<NoteBluePrint>().Manager = this;
+        //GameObject go = Instantiate(testNote, spawnPosition.position, spawnPosition.rotation);
+        //go.GetComponent<NoteBluePrint>().Manager = this;
 
-        StartCoroutine(NoteEmission(Frequency));
+        StartCoroutine(NoteEmission(frequency));
     }
 
     private IEnumerator NoteEmission(float waitTime)
     {
         float elapsedTime = 0f;
 
-        while (elapsedTime < waitTime)
-        {
-            elapsedTime += Time.deltaTime;
-            if (elapsedTime >= waitTime)
+            while (elapsedTime < waitTime)
             {
-                GameObject go = Instantiate(testNote, spawnPosition.position, spawnPosition.rotation);
-                go.GetComponent<NoteBluePrint>().Manager = this;
-                elapsedTime = 0f;
-            }
-            yield return null;
+                elapsedTime += Time.deltaTime;
+                if (elapsedTime >= waitTime)
+                {
+                    foreach (Transform startPos in SpawnPositions)
+                    {
+                        GameObject go = Instantiate(testNote, startPos.position, startPos.rotation);
+                        go.GetComponent<NoteBluePrint>().Manager = this;
+                    }//end for each start posision
+                    elapsedTime = 0f;
+                }
+                yield return null;
         }
-    }
+    }//end NoteEmission()
 
 }
