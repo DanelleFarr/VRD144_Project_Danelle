@@ -13,20 +13,20 @@ public class NoteManager : MonoBehaviour
     private float frequencyAdjustment = 3f;
     [SerializeField]
     private Transform[] SpawnPositions;
-    /*[SerializeField]
-    private Note percussionNote;
     [SerializeField]
-    private Note stringNote;
+    private GameObject percussionNote;
     [SerializeField]
-    private Note pluckedNote;
+    private GameObject stringNote;
     [SerializeField]
-    private Note brassNote;
+    private GameObject pluckedNote;
     [SerializeField]
-    private Note WindNote;
+    private GameObject brassNote;
     [SerializeField]
-    private Note keyboardNote;
+    private GameObject windNote;
     [SerializeField]
-    private Note vocalNote;*/
+    private GameObject keyboardNote;
+    [SerializeField]
+    private GameObject vocalNote;
     [SerializeField]
     private GameObject testNote;
 

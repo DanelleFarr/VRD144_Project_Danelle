@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class NoteBluePrint : MonoBehaviour
 {
+    protected float speed;
+    private float speedModifier = 2f;
+    [SerializeField]
+    protected NoteType noteType;
     [SerializeField]
     private NoteManager noteManager;
     public NoteManager Manager
@@ -18,8 +22,7 @@ public class NoteBluePrint : MonoBehaviour
             noteManager = value;
         }
     }
-    protected float speed;
-    private float speedModifier = 2f;
+
 
     private void Start()
     {
