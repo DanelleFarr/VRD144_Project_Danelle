@@ -38,10 +38,17 @@ public class NoteBluePrint : MonoBehaviour
     public void MoveForward()
     {
         this.transform.Translate(0, 0, -(speed * speedModifier * Time.deltaTime), Space.World);
-        Debug.Log("Moving");
     }//end MoveForward
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Entered a Collider");
+        if (other == noteManager.KillZone)
+        {
+            Debug.Log("EnteredKillZone");
+            Destroy(this.gameObject);
+        }//end if IsAccepted
+    }
 
 
 
