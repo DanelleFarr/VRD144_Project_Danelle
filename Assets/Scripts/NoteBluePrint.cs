@@ -6,9 +6,9 @@ using UnityEngine;
 public class NoteBluePrint : MonoBehaviour
 {
     protected float speed;
-    private float speedModifier = 5f;
+    private float speedModifier = 4f;
     protected Transform endPos;
-    public Transform TargetPosition { get { return endPos; } set { endPos = TargetPosition; } }
+    public Transform TargetPosition { get { return endPos; } set { endPos = value; } }
     [SerializeField]
     protected NoteType noteType;
     [SerializeField]
@@ -18,14 +18,14 @@ public class NoteBluePrint : MonoBehaviour
 
     private void Start()
     {
-        speed = noteManager.Speed;
+        speed = (speedModifier * noteManager.Speed) +1f;
     }
     private void Update()
     {
         if (noteManager != null)
         {
             MoveForward();
-           //StartCoroutine(MoveToTarget(endPos, speed * speedModifier));
+           //StartCoroutine(MoveToTarget(endPos, speed));
         }
     }
     public void MoveForward()
@@ -36,15 +36,15 @@ public class NoteBluePrint : MonoBehaviour
     private IEnumerator MoveToTarget(Transform target, float duration)
     {
         float elapsedTime = 0f;
-        Vector3 startPos = target.position;
-        Quaternion startRot = target.rotation;
+        Vector3 endPos = target.position;
+        //Quaternion endRot = target.rotation;
 
         while (elapsedTime < duration)
         {
-            target.position = Vector3.Lerp(startPos, this.transform.position, elapsedTime / duration);
-            target.rotation = Quaternion.Lerp(startRot, this.transform.rotation, elapsedTime / duration);
+            this.transform.position = Vector3.Lerp(this.transform.position, endPos, elapsedTime / duration);
+            Debug.Log("time/duration = " + (elapsedTime / duration));
+            //this.transform.rotation = Quaternion.Lerp(this.transform.rotation, target.rotation, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
-            Debug.Log("ElapsedTime = " + elapsedTime);
             yield return null;
         }
     }

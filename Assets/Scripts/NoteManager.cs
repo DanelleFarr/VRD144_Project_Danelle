@@ -35,8 +35,9 @@ public class NoteManager : MonoBehaviour
     private Collider killZone;
 
 
-    public float Speed { get { return speed; } set { speed = value; ; Debug.Log("Speed is now " + speed); } }
-    public float Frequency { get { return frequency; } set { frequency = (frequencyAdjustment + (frequencyAdjustment * value)); Debug.Log("Freqeuncy is now " + frequency); } }
+    public float Speed { get { return speed; } set { speed = value;} }
+    public float Frequency { get { return frequency; } 
+        set { frequency = (frequencyAdjustment + (frequencyAdjustment * value)); } }
     public Collider KillZone { get { return killZone; } }
 
     // Start is called before the first frame update
