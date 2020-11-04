@@ -9,8 +9,9 @@ public class NoteManager : MonoBehaviour
     //[SerializeField]
     private float speed = .5f;
     //[SerializeField]
-    private float frequency = 3f;
-    private float frequencyAdjustment = 10f;
+    private float frequency = 5f;
+    private float frequencyAdjustment = 2f;
+    private GameObject notetoMake;
     [SerializeField]
     private Transform[] SpawnPositions;
     [SerializeField]
@@ -44,13 +45,24 @@ public class NoteManager : MonoBehaviour
     void Start()
     {
 
-        /*foreach (Transform startPos in SpawnPositions)
-        {
-            GameObject go = Instantiate(testNote, startPos.position, startPos.rotation);
-            go.GetComponent<NoteBluePrint>().Manager = this;
-        }//end for each start posision*/
+        notetoMake = testNote;
         StartCoroutine(NoteEmission(frequency));
     }
+
+    public void SwitchNotes(int note)
+    {
+        switch(note)
+        {
+            case 1: notetoMake = percussionNote; return;
+            case 2: notetoMake = stringNote; return;
+            case 3: notetoMake = pluckedNote; return;
+            case 4: notetoMake = brassNote; return;
+            case 5: notetoMake = windNote; return;
+            case 6: notetoMake = keyboardNote; return;
+            case 7: notetoMake = vocalNote; return;
+            default: notetoMake = testNote; return;
+        }
+    }//end SwitchNotes
 
     private IEnumerator NoteEmission(float waitTime)
     {
@@ -62,7 +74,7 @@ public class NoteManager : MonoBehaviour
             if (elapsedTime >= waitTime)
             {
                 
-                GameObject go = Instantiate(testNote, SpawnPositions[3].position, SpawnPositions[3].rotation);
+                GameObject go = Instantiate(notetoMake, SpawnPositions[3].position, SpawnPositions[3].rotation);
                 go.GetComponent<NoteBluePrint>().Manager = this;
                 go.GetComponent<NoteBluePrint>().TargetPosition = TargetPositions[3];
                 elapsedTime = 0f;

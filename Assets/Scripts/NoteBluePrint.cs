@@ -6,7 +6,7 @@ using UnityEngine;
 public class NoteBluePrint : MonoBehaviour
 {
     protected float speed;
-    private float speedModifier = 4f;
+    private float speedModifier = 5f;
     protected Transform endPos;
     public Transform TargetPosition { get { return endPos; } set { endPos = value; } }
     [SerializeField]
@@ -18,14 +18,14 @@ public class NoteBluePrint : MonoBehaviour
 
     private void Start()
     {
-        speed = (speedModifier * noteManager.Speed) +1f;
+        speed = 10f -(speedModifier * noteManager.Speed);
     }
     private void Update()
     {
         if (noteManager != null)
         {
-            MoveForward();
-           //StartCoroutine(MoveToTarget(endPos, speed));
+            //MoveForward();
+           StartCoroutine(MoveToTarget(endPos, speed));
         }
     }
     public void MoveForward()
@@ -36,14 +36,15 @@ public class NoteBluePrint : MonoBehaviour
     private IEnumerator MoveToTarget(Transform target, float duration)
     {
         float elapsedTime = 0f;
+        Vector3 startPos = this.transform.position;
         Vector3 endPos = target.position;
+        //Quaternion startRot = this.transform.rotation;
         //Quaternion endRot = target.rotation;
 
         while (elapsedTime < duration)
         {
-            this.transform.position = Vector3.Lerp(this.transform.position, endPos, elapsedTime / duration);
-            Debug.Log("time/duration = " + (elapsedTime / duration));
-            //this.transform.rotation = Quaternion.Lerp(this.transform.rotation, target.rotation, elapsedTime / duration);
+            this.transform.position = Vector3.Lerp(startPos, endPos, elapsedTime / duration);
+            //this.transform.rotation = Quaternion.Lerp(startRot, target.rotation, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -53,9 +54,34 @@ public class NoteBluePrint : MonoBehaviour
     {
         if (other == noteManager.KillZone)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
+            StartCoroutine(FadeOut(this.gameObject, .5f));
         }//end if IsAccepted
     }
+
+    private IEnumerator FadeOut(GameObject target, float duration)
+    {
+        float elapsedTime = 0f;
+        Color fadeColor = target.GetComponent<MeshRenderer>().material.color;
+        float transp = 1f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime > duration) //destroy object if time elapsed
+            {
+                Destroy(target);
+            }//end if duration up
+            else //fade Material alpha over time
+            {
+                transp = (1 - elapsedTime / duration);
+                fadeColor.a = transp;
+                target.GetComponent<MeshRenderer>().material.color = fadeColor;
+            }//end else
+            yield return null;
+        }//while duration
+    }//end FadeOut()
+
 
 
 
