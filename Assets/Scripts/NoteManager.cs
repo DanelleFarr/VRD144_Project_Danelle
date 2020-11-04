@@ -75,8 +75,11 @@ public class NoteManager : MonoBehaviour
             {
                 
                 GameObject go = Instantiate(notetoMake, SpawnPositions[3].position, SpawnPositions[3].rotation);
-                go.GetComponent<NoteBluePrint>().Manager = this;
-                go.GetComponent<NoteBluePrint>().TargetPosition = TargetPositions[3];
+                NoteBluePrint noteBluePrint = go.GetComponent<NoteBluePrint>();
+                noteBluePrint.Manager = this;
+                noteBluePrint.TargetPosition = TargetPositions[3];
+                noteBluePrint.Speed = speed;
+                StartCoroutine(noteBluePrint.MoveToTarget(TargetPositions[3], noteBluePrint.Speed));
                 elapsedTime = 0f;
             }
             yield return null;
