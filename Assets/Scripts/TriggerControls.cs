@@ -40,6 +40,11 @@ public class TriggerControls : MonoBehaviour
 
     private bool IsAccepted(Collider other)
     {
+        if (acceptedColliders.Length < 1)
+        {
+            return other.GetComponent<VRDControllerInputHandler>() != null;
+        }
+
         foreach (Collider item in acceptedColliders)
         {
             if (other == item)

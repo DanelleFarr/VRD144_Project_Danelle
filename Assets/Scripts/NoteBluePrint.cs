@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class NoteBluePrint : MonoBehaviour
 {
+    protected int scoreOut;
     [SerializeField]
     protected float speed;
     public float Speed { get { return speed; } set { speed = 10f - (speedModifier * value); } }
