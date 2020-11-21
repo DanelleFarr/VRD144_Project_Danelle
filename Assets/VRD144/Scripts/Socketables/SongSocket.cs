@@ -20,6 +20,7 @@ public class SongSocket : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Entered Trigger");
         // Try to find a socketable
         song = other.GetComponent<TestSong>();
 

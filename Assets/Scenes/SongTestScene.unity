@@ -1024,7 +1024,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012476760}
   m_LocalRotation: {x: -0, y: -0.73156625, z: -0, w: 0.68177044}
-  m_LocalPosition: {x: -1.063, y: 1.088, z: -0.848}
+  m_LocalPosition: {x: -1.067, y: 1.088, z: -0.789}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2691,8 +2691,8 @@ GameObject:
   - component: {fileID: 1811201910}
   - component: {fileID: 1811201909}
   - component: {fileID: 1811201908}
-  - component: {fileID: 1811201907}
   - component: {fileID: 1811201906}
+  - component: {fileID: 1811201907}
   - component: {fileID: 1811201905}
   m_Layer: 0
   m_Name: SongSocket
@@ -2716,8 +2716,8 @@ MonoBehaviour:
   doTween: 1
   duration: 0.5
   handler: {fileID: 1387339102}
---- !u!64 &1811201906
-MeshCollider:
+--- !u!136 &1811201906
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2726,10 +2726,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1678602411}
+  m_Radius: 0.25
+  m_Height: 0.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!114 &1811201907
 MonoBehaviour:
   m_ObjectHideFlags: 0
