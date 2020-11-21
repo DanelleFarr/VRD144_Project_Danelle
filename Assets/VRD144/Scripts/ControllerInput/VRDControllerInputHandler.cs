@@ -7,15 +7,15 @@ public class VRDControllerInputHandler : MonoBehaviour
     private OVRInput.Controller controller;
     
     // A/X button Listeners
-    private List<VRDControllerButtonListener> buttonOneListeners = new List<VRDControllerButtonListener>();
+    private List<IButtonListener> buttonOneListeners = new List<IButtonListener>();
     // B/Y button Listeners
-    private List<VRDControllerButtonListener> buttonTwoListeners = new List<VRDControllerButtonListener>();
+    private List<IButtonListener> buttonTwoListeners = new List<IButtonListener>();
     // Thumbstick press (not movement) Listeners
-    private List<VRDControllerButtonListener> thumbstickListeners = new List<VRDControllerButtonListener>();
+    private List<IButtonListener> thumbstickListeners = new List<IButtonListener>();
     // Trigger press (not movement) Listeners
-    private List<VRDControllerButtonListener> indexTriggerListeners = new List<VRDControllerButtonListener>();
+    private List<IButtonListener> indexTriggerListeners = new List<IButtonListener>();
     // Grip press (not movement) Listeners
-    private List<VRDControllerButtonListener> gripTriggerListeners = new List<VRDControllerButtonListener>();
+    private List<IButtonListener> gripTriggerListeners = new List<IButtonListener>();
 
     /// <summary>
     /// The current value of a controller's
@@ -50,7 +50,7 @@ public class VRDControllerInputHandler : MonoBehaviour
         get { return OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, controller); }
     }
 
-    public void Subscribe(VRDControllerButtonListener listener)
+    public void Subscribe(IButtonListener listener)
     {
         // Get the button(s) that the VRDControllerButtonListener
         // wants to get input from
@@ -90,7 +90,7 @@ public class VRDControllerInputHandler : MonoBehaviour
     /// was assigned to
     /// </summary>
     /// <param name="listener">The listener to be removed</param>
-    public void Unsubscribe(VRDControllerButtonListener listener)
+    public void Unsubscribe(IButtonListener listener)
     {
         // Get the button(s) that the VRDControllerButtonListener
         // was getting input from
@@ -133,7 +133,7 @@ public class VRDControllerInputHandler : MonoBehaviour
     /// will be receiving input feedback</param>
     /// <param name="targetList">The list of VRDControllerButtonListener
     /// components that this component should be assigned to</param>
-    private void Subscribe(VRDControllerButtonListener listener, ref List<VRDControllerButtonListener> targetList)
+    private void Subscribe(IButtonListener listener, ref List<IButtonListener> targetList)
     {
         // Check to see if the listener
         // is already in the list before adding
@@ -154,7 +154,7 @@ public class VRDControllerInputHandler : MonoBehaviour
     /// will was receiving input feedback</param>
     /// <param name="targetList">The list of VRDControllerButtonListener
     /// components that this component should be removed from</param>
-    public void Unsubscribe(VRDControllerButtonListener listener, ref List<VRDControllerButtonListener> targetList)
+    public void Unsubscribe(IButtonListener listener, ref List<IButtonListener> targetList)
     {
         // Note that the method signature
         // above uses the ref keyword which
@@ -179,45 +179,46 @@ public class VRDControllerInputHandler : MonoBehaviour
         // A or X depending on controller
         if (OVRInput.GetDown(OVRInput.Button.One, controller))
         {
-            foreach(VRDControllerButtonListener listener in buttonOneListeners)
-            {
-                listener.ReceiveInput();
+            for (int i = buttonOneListeners.Count - 1; i >= 0; i--)
+            {            
+                buttonOneListeners[i].ReceiveInput();
             }
         }
 
         // B or Y depending on controller
         if (OVRInput.GetDown(OVRInput.Button.Two, controller))
         {
-            foreach (VRDControllerButtonListener listener in buttonTwoListeners)
+            for (int i = buttonTwoListeners.Count - 1; i >= 0; i--)
             {
-                listener.ReceiveInput();
+                buttonTwoListeners[i].ReceiveInput();
             }
         }
 
         // Pressing the thumbstick as a button
         if (OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick, controller))
         {
-            foreach (VRDControllerButtonListener listener in thumbstickListeners)
+            for (int i = thumbstickListeners.Count - 1; i >= 0; i--)
             {
-                listener.ReceiveInput();
+                thumbstickListeners[i].ReceiveInput();
             }
         }
 
         // Trigger is fully pressed
         if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, controller))
         {
-            foreach (VRDControllerButtonListener listener in indexTriggerListeners)
+            for (int i = indexTriggerListeners.Count - 1; i >= 0; i--)
             {
-                listener.ReceiveInput();
+                indexTriggerListeners[i].ReceiveInput();
             }
+            
         }
 
         // GripButton is fully pressed
         if(OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, controller))
         {
-            foreach (VRDControllerButtonListener listener in gripTriggerListeners)
+            for (int i = gripTriggerListeners.Count - 1; i >= 0; i--)
             {
-                listener.ReceiveInput();
+                gripTriggerListeners[i].ReceiveInput();
             }
         }
     }

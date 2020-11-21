@@ -9,8 +9,10 @@ using UnityEngine.Events;
 /// to be within the trigger volume of
 /// the controller.
 /// </summary>
-public class VRDControllerButtonListener : MonoBehaviour
+public class VRDControllerButtonListener : MonoBehaviour, IButtonListener
 {
+    //[SerializeField]
+    //OVRInput.Controller targetController = OVRInput.Controller.LTouch;
     /// <summary>
     /// The button(s) to listen for
     /// </summary>
@@ -50,7 +52,7 @@ public class VRDControllerButtonListener : MonoBehaviour
         OnTargetButtonPressed.Invoke();
     }
 
-    public void OnTriggerEnter(Collider other)
+    public virtual void OnTriggerEnter(Collider other)
     {
         // Attempt to find an input handler
         // on the colliding object
@@ -68,7 +70,7 @@ public class VRDControllerButtonListener : MonoBehaviour
         }
     }
 
-    public void OnTriggerExit(Collider other)
+    public virtual void OnTriggerExit(Collider other)
     {
         // Attempt to find an input handler on
         // the exiting object

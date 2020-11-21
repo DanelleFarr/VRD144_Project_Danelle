@@ -6,32 +6,42 @@ using UnityEngine;
 public class SongHandler : MonoBehaviour
 {
     [SerializeField]
-    private List<RhythmStucture> notes;
+    public RhythmStucture[] notes;
     [SerializeField]
     private int currNote = 0;
+    //[SerializeField]
+    //private float songTime = 0f;
     [SerializeField]
-    private float songTime = 0f;
+    public float spawnDistMod = 2f;
     [SerializeField]
-    public float spawnDist = 10f;
+    private SongSocket songReader;
+    [SerializeField]
+    private bool songIsPlaying = false;
     
     private void Start()
     {
-        foreach (RhythmStucture note in notes)
-        {
-            StartCoroutine(SpawnNote(note));
-        }
+       
     }
 
     private void Update()
     {
-        songTime += Time.deltaTime;
+        //songTime += Time.deltaTime;
+
     }
 
 
-
+    public void PlaySong(RhythmStucture[] notes)
+    {
+        foreach (RhythmStucture note in notes)
+        {
+            GameObject go = Instantiate(note.NotePrefab.gameObject, note.StartPos.position, note.StartPos.rotation);
+            go.transform.Translate(0, 0, note.TimeStamp * spawnDistMod);
+            StartCoroutine(go.GetComponent<NoteBluePrint>().MoveToTarget(note.EndPos, note.TimeStamp));
+        }
+    }//end PlaySong()
     private IEnumerator SpawnNote(RhythmStucture note)
     {
-        GameObject go = Instantiate(note.NotePrefab, note.StartPos.position, note.StartPos.rotation);
+        GameObject go = Instantiate(note.NotePrefab.gameObject, note.StartPos.position, note.StartPos.rotation);
         go.transform.Translate(0, 0, note.TimeStamp);
         Vector3 startPos = go.transform.position;
         Vector3 endPos = note.EndPos.position;

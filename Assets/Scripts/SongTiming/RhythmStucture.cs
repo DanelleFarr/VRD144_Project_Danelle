@@ -4,7 +4,7 @@
 public class RhythmStucture
 {
     [SerializeField]
-    GameObject notePrefab;
+    NoteBluePrint notePrefab;
     /// <summary>
     /// Time in seconds along the
     /// song timeline
@@ -22,7 +22,7 @@ public class RhythmStucture
         get { return timeStamp; }
     }
 
-    public GameObject NotePrefab
+    public NoteBluePrint NotePrefab
     {
         get { return notePrefab; }
     }

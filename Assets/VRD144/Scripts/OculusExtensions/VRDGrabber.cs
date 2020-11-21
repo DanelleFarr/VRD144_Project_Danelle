@@ -33,6 +33,7 @@ public class VRDGrabber : OVRGrabber
             zRot = grabbedRigidbody.rotation.z;
         }
 
+        
         grabbableRotation = Quaternion.Euler(xRot, yRot, zRot);
 
         if (forceTeleport)

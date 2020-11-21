@@ -21,7 +21,7 @@ public class NoteBluePrint : MonoBehaviour
 
     private void Start()
     {
-        speed = 10f - (speedModifier * noteManager.Speed);
+       // speed = 10f - (speedModifier * noteManager.Speed);
 
     }
 
@@ -37,7 +37,7 @@ public class NoteBluePrint : MonoBehaviour
         Vector3 endPos = target.position;
         //Quaternion startRot = this.transform.rotation;
         //Quaternion endRot = target.rotation;
-        float earlyStart = 2f;
+        float earlyStart = .5f;
 
         while (elapsedTime < duration)
         {
@@ -56,15 +56,6 @@ public class NoteBluePrint : MonoBehaviour
 
         
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other == noteManager.KillZone)
-    //    {
-    //        //Destroy(this.gameObject);
-    //        StartCoroutine(FadeOut(this.gameObject, .5f));
-    //    }//end if IsAccepted
-    //}
 
     private IEnumerator FadeOut(GameObject target, float duration)
     {
