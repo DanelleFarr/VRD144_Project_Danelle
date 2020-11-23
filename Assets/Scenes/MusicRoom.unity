@@ -12328,8 +12328,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   acceptedColliders:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2077318273}
+  - {fileID: 2077318272}
 --- !u!54 &378632386
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13039,8 +13039,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   acceptedColliders:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2077318273}
+  - {fileID: 2077318272}
 --- !u!64 &387191670
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25839,8 +25839,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   acceptedColliders:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2077318273}
+  - {fileID: 2077318272}
 --- !u!64 &669659510
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26247,8 +26247,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   acceptedColliders:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2077318273}
+  - {fileID: 2077318272}
 --- !u!64 &670545115
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27830,8 +27830,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   acceptedColliders:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2077318273}
+  - {fileID: 2077318272}
 --- !u!64 &749207794
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34423,9 +34423,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   acceptedColliders:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2077318273}
+  - {fileID: 2077318272}
 --- !u!54 &781611783
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -38098,8 +38097,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   acceptedColliders:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2077318273}
+  - {fileID: 2077318272}
 --- !u!64 &878761563
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42893,8 +42892,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   acceptedColliders:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2077318273}
+  - {fileID: 2077318272}
 --- !u!64 &1355610015
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46893,8 +46892,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   acceptedColliders:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2077318273}
+  - {fileID: 2077318272}
 --- !u!114 &1559520017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51749,8 +51748,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   acceptedColliders:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2077318273}
+  - {fileID: 2077318272}
 --- !u!64 &1568618020
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -53134,8 +53133,8 @@ MonoBehaviour:
       m_Calls: []
   acceptedColliders:
   - {fileID: 529487204}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2077318273}
+  - {fileID: 2077318272}
 --- !u!54 &1654349297
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -59127,6 +59126,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &2077318272 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 2505385119021047096, guid: e1849c6cc1050a6478f47bcb89f68f6f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2077318265}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &2077318273 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 8661985983427490078, guid: e1849c6cc1050a6478f47bcb89f68f6f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2077318265}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2095943181
 GameObject:
   m_ObjectHideFlags: 0
