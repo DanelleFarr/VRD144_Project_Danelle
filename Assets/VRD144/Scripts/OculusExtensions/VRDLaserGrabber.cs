@@ -37,6 +37,10 @@ public class VRDLaserGrabber : MonoBehaviour
     /// </summary>
     [SerializeField]
     private OVRInput.Button uiInteractionButton;
+    [SerializeField]
+    private Color startColor;
+    [SerializeField]
+    private Color highlightColor;
 
     public OVRInput.Button UIInteractionButton
     {
@@ -47,6 +51,7 @@ public class VRDLaserGrabber : MonoBehaviour
     /// Object that is currently selected
     /// by the laser pointer
     /// </summary>
+    [SerializeField]
     private GameObject selectedObject = null;
 
     private GameObject SelectedObject
@@ -108,7 +113,15 @@ public class VRDLaserGrabber : MonoBehaviour
             // Raycast to find a collider
             Physics.Raycast(ray, out hitInfo);
             // End our laser at the collision point
-            line.SetPosition(1, hitInfo.point);
+            if(hitInfo.point == null)
+            {
+                line.SetPosition(1, transform.forward * 10);
+            }
+            else
+            {
+                line.SetPosition(1, hitInfo.point);
+            }
+            
 
             float dist = Vector3.Distance(hitInfo.point, transform.position);
 
@@ -120,12 +133,12 @@ public class VRDLaserGrabber : MonoBehaviour
                 bool selectable = IsInteractable(SelectedObject);
                 if (selectable)
                 {
-                    line.startColor = line.endColor = Color.yellow;
+                    line.startColor = line.endColor = highlightColor;
                 }
 
                 else
                 {
-                    line.startColor = line.endColor = Color.red;
+                    line.startColor = line.endColor = startColor;
                 }
             } // End If effective Range
 
@@ -157,7 +170,7 @@ public class VRDLaserGrabber : MonoBehaviour
             return;
         }
 
-        line.startColor = line.endColor = Color.yellow;
+        line.startColor = line.endColor = highlightColor;
         // Toggle Off the pointer
         TogglePointer();
         // Instanly move the object to the hand
@@ -173,7 +186,8 @@ public class VRDLaserGrabber : MonoBehaviour
         {
             return;
         }
-        VRD_UIInteractor buttonTrigger = SelectedObject.GetComponent<VRD_UIInteractor>() ?? SelectedObject.GetComponentInParent<VRD_UIInteractor>();
+
+        VRD_UIInteractor buttonTrigger = selectedObject.GetComponent<VRD_UIInteractor>();// ?? SelectedObject.GetComponentInParent<VRD_UIInteractor>();
         if(buttonTrigger == null)
         {
             return;
