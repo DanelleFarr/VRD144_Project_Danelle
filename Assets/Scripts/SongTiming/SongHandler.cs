@@ -17,10 +17,13 @@ public class SongHandler : MonoBehaviour
     private SongSocket songReader;
     [SerializeField]
     private bool songIsPlaying = false;
+
+    [SerializeField]
+    private TestSong chosenSong;
     
     private void Start()
     {
-       
+        PlaySong(chosenSong.Song);
     }
 
     private void Update()
