@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 704b3f894798b414e8d1a4c38ed131de, type: 3}
   m_Name: GlobalSongInfo
   m_EditorClassIdentifier: 
-  songName: TestSongA
+  songName: PercussionSong

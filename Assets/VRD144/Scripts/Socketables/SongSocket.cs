@@ -17,6 +17,10 @@ public class SongSocket : MonoBehaviour
     //public DisplayCanvasManager handler;
     [SerializeField]
     public TextMeshProUGUI songsCanvas;
+    [SerializeField]
+    private SongInfo globalSongInfo;
+    [SerializeField]
+    private Transform targetPosition;
 
     private void Start()
     {
@@ -27,6 +31,7 @@ public class SongSocket : MonoBehaviour
         // Try to find a socketable
         displayInfo = other.GetComponent<StoredSongInfo>();
         songsCanvas.text = displayInfo.SongName;
+        globalSongInfo.SongName = displayInfo.songCodeName.ToLower();
 
         // If there isn't one, exit the method
         if(displayInfo == null)
@@ -77,8 +82,8 @@ public class SongSocket : MonoBehaviour
 
         while(elapsedTime < duration)
         {
-            target.position = Vector3.Lerp(startPos, this.transform.position, elapsedTime / duration);
-            target.rotation = Quaternion.Lerp(startRot, this.transform.rotation, elapsedTime / duration);
+            target.position = Vector3.Lerp(startPos, targetPosition.position, elapsedTime / duration);
+            target.rotation = Quaternion.Lerp(startRot, targetPosition.rotation, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }

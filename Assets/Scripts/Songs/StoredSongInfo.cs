@@ -7,5 +7,5 @@ public class StoredSongInfo : MonoBehaviour
     [SerializeField]
     public string SongName;
     [SerializeField]
-    public string sceneToLoad;
+    public string songCodeName;
 }
