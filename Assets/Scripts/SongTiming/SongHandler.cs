@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SongHandler : MonoBehaviour
 {
@@ -80,8 +81,13 @@ public class SongHandler : MonoBehaviour
         Destroy(go);
     }
 
+    public void LoadScene(string sceneToLoad)
+    {
+        SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
+    }
+
     // Spawn note
-    
+
     // Move from spawn to target in proper time
 
 
