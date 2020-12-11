@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/RebuiltMusicRoom.unity
+    guid: 77c75f483ada0c34aac1f9eb550e9dbc
+  - enabled: 1
+    path: Assets/Scenes/TestLoadRoom.unity
+    guid: 4157b747fcc179342bd81b9cc6fd9f52
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: deeb0f5f01a57464398c023ae733bc69,
       type: 2}

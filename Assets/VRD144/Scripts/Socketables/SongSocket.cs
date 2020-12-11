@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SongSocket : MonoBehaviour
 {
@@ -10,27 +11,29 @@ public class SongSocket : MonoBehaviour
     private bool doTween = false;
     [SerializeField]
     private float duration = 1f;
-    private TestSong song; 
+    private StoredSongInfo displayInfo; 
     private MeshRenderer meshRenderer;
+    //[SerializeField]
+    //public DisplayCanvasManager handler;
     [SerializeField]
-    private SongHandler handler;
+    public TextMeshProUGUI songsCanvas;
+
     private void Start()
     {
-        meshRenderer = this.GetComponent<MeshRenderer>();
+
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Entered Trigger");
         // Try to find a socketable
-        song = other.GetComponent<TestSong>();
+        displayInfo = other.GetComponent<StoredSongInfo>();
+        songsCanvas.text = displayInfo.SongName;
 
         // If there isn't one, exit the method
-        if(song == null)
+        if(displayInfo == null)
         {
             return;
         }
 
-        handler.PlaySong(song.Song);
 
         // find the grabbable
         OVRGrabbable grabbable = other.GetComponent<OVRGrabbable>();       
@@ -42,27 +45,26 @@ public class SongSocket : MonoBehaviour
             grabbable.grabbedBy.ForceRelease(grabbable);
         }
 
-        meshRenderer.enabled = false;
-        song.GetComponent<Rigidbody>().isKinematic = true;
+        displayInfo.GetComponent<Rigidbody>().isKinematic = true;
 
         if (doTween)
         {
-            StartCoroutine(MoveIntoPlace(song.transform, duration));
+            StartCoroutine(MoveIntoPlace(displayInfo.transform, duration));
         }
         else
         {
-            song.transform.position = this.transform.position;
-            song.transform.rotation = this.transform.rotation;
+            displayInfo.transform.position = this.transform.position;
+            displayInfo.transform.rotation = this.transform.rotation;
         }
         
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject == song.gameObject)
+        if(other.gameObject == displayInfo.gameObject)
         {
             meshRenderer.enabled = true;
-            song = null;
+            displayInfo = null;
         }
         
     }

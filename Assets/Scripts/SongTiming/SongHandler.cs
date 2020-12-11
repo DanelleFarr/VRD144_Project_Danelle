@@ -20,10 +20,29 @@ public class SongHandler : MonoBehaviour
 
     [SerializeField]
     private TestSong chosenSong;
+    [SerializeField]
+    private SongInfo globalSongInfo;
+
+    [SerializeField]
+    private List<TestSong> testSongs;
     
     private void Start()
     {
+
+        chosenSong = GetSongByName(globalSongInfo.SongName);
         PlaySong(chosenSong.Song);
+    }
+
+    private TestSong GetSongByName(string name)
+    {
+        for (int i = 0; i < testSongs.Count; i++)
+        {
+            if(testSongs[i].gameObject.name.ToLower() == name.ToLower())
+            {
+                return testSongs[i];
+            }
+        }
+        return null;
     }
 
     private void Update()
